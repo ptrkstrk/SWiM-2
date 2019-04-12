@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="add_button_margin">8dp</dimen>
+    <dimen name="add_button_padding">8dp</dimen>
+    <dimen name="add_ET_margin">8dp</dimen>
+    <dimen name="add_TV_margin">8dp</dimen>
+    <dimen name="main_row_padding">5dp</dimen>
+    <dimen name="main_row_margin">2dp</dimen>
+    <dimen name="main_rowTV_margin">8dp</dimen>
+    <dimen name="main_rowIV_margin">8dp</dimen>
+    <dimen name="main_row_height">280dp</dimen>
+    <dimen name="add_button_shape_radius">10dp</dimen>
+    <dimen name="main_row_shape_radius">8dp</dimen>
+    <dimen name="main_row_stroke_width">1dp</dimen>
+</resources>

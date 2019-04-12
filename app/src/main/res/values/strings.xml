@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">InstagraML</string>
+    <string name="main_action_add">Add</string>
+    <string name="add_photo_activity_label">Add Photo</string>
+    <string name="add_url_hint">URL</string>
+    <string name="add_urlTV_label">Image URL</string>
+    <string name="add_nameTV_label">Image Name</string>
+    <string name="add_name_hint">Name</string>
+    <string name="main_row_nameTV_label">Name:</string>
+    <string name="main_row_dateTV_label">Date:</string>
+    <string name="main_row_tagsTV_label">Tags:</string>
+    <string name="add_url_error_msg">enter URL address</string>
+    <string name="add_no_name_error_msg">enter name</string>
+    <string name="add_long_name_error_msg">Name can be up to 25 characters long</string>
+</resources>

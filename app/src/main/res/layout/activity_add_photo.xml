@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddPhotoActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include layout="@layout/toolbar"
+                 android:layout_width="match_parent" android:layout_height="match_parent"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/nameET"
+                android:hint="@string/add_name_hint"
+                android:layout_marginEnd="@dimen/add_ET_margin" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/add_ET_margin"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginTop="@dimen/add_ET_margin" app:layout_constraintTop_toBottomOf="@+id/add_name_label"/>
+        <TextView
+                android:text="@string/add_nameTV_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_name_label" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/add_TV_margin"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="@dimen/add_TV_margin"
+                android:textSize="24sp"
+                android:fontFamily="@font/roboto" android:textColor="@color/textColor"
+                app:layout_constraintHorizontal_bias="0.501" android:layout_marginTop="@dimen/add_TV_margin"
+                app:layout_constraintTop_toBottomOf="@+id/urlET"/>
+        <TextView
+                android:text="@string/add_urlTV_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_url_label" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/add_TV_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/add_TV_margin"
+                android:textSize="24sp"
+                android:fontFamily="@font/roboto" android:textColor="@color/textColor"
+                android:layout_marginTop="@dimen/add_TV_margin" app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                android:ems="10"
+                android:id="@+id/urlET"
+                android:hint="@string/add_url_hint" android:layout_marginTop="@dimen/add_ET_margin"
+                app:layout_constraintTop_toBottomOf="@+id/add_url_label"
+                android:layout_marginEnd="@dimen/add_ET_margin" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/add_ET_margin"
+                app:layout_constraintStart_toStartOf="parent"/>
+        <Button
+                android:text="@string/add_photo_activity_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_button" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/add_button_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/add_button_margin"
+                app:layout_constraintHorizontal_bias="0.504"
+                android:background="@drawable/add_button"
+                android:textSize="50sp"
+                android:textColor="@color/lightTextColor"
+                android:textAllCaps="false"
+                android:fontFamily="@font/roboto" android:textStyle="bold"
+                android:padding="@dimen/add_button_padding"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="@dimen/add_button_margin"
+                android:layout_marginTop="@dimen/add_button_margin"
+                app:layout_constraintTop_toBottomOf="@+id/nameET"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

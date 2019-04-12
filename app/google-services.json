@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1018924527222",
+    "firebase_url": "https://myswimproject-c9253.firebaseio.com",
+    "project_id": "myswimproject-c9253",
+    "storage_bucket": "myswimproject-c9253.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1018924527222:android:27b307cf6f13cc40",
+        "android_client_info": {
+          "package_name": "com.example.labtestapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_Uezuab4yE-PUcO4U7GV49GxukPSKL4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1018924527222-5uq769p533bnikgtujg54vk895mjs3ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
