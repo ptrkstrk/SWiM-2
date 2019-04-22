@@ -27,6 +27,10 @@ class PhotosAdapter(private val entriesList: ArrayList<PhotoEntry>) : RecyclerVi
         holder.name.text = currentEntry.name
         setPhotoAndTags(holder, currentEntry)
         holder.date.text = currentEntry.date
+
+        holder.itemView.setOnClickListener{
+            holder.name.text = ""
+        }
     }
 
     private fun setPhotoAndTags(holder: ViewHolder, currentEntry:PhotoEntry) {
