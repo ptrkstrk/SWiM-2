@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".fragments.DetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:background="@color/colorPrimaryUltraLight">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/tagsView" android:textAlignment="center"
+                android:textSize="36sp" android:textColor="@color/textColor"
+                tools:layout_editor_absoluteX="0dp" android:layout_marginTop="@dimen/TV_margin"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="@dimen/TV_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/tags_default_text"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

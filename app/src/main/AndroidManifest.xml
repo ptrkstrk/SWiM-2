@@ -29,6 +29,11 @@
                 android:parentActivityName=".MainActivity"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+                android:name=".PhotoDetailsActivity"
+                android:label = "@string/photoDetailsLabel"
+                android:parentActivityName=".MainActivity">
+        </activity>
         <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
         <meta-data
                 android:name="com.google.firebase.ml.vision.DEPENDENCIES"

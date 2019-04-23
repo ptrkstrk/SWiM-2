@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PhotoDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <FrameLayout
+                android:id="@+id/fragment_holder"
+                android:layout_width="0dp"
+                android:layout_height="0dp" android:layout_marginBottom="@dimen/frame_margin"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="@dimen/frame_margin"
+                app:layout_constraintTop_toBottomOf="@+id/toggleBtn" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/button_margin" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/button_margin">
+        </FrameLayout>
+        <ToggleButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/toggleBtn"
+                android:textOff="@string/toggle_show_tags"
+                android:textOn="@string/toggle_show_photo" android:textSize="36sp"
+                android:shadowColor="@color/colorPrimary"
+                android:textColorLink="@color/colorPrimary" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/button_margin" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/button_margin" android:layout_marginTop="@dimen/button_margin"
+                app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
