@@ -26,17 +26,17 @@ class PhotoFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         Picasso.get()
-            .load(photoURL)
-            .into(object : com.squareup.picasso.Target {
-                override fun onBitmapLoaded(bitmap: Bitmap, from: Picasso.LoadedFrom) {
-                    photoView.setImageBitmap(bitmap)
-                }
-
-                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
-
-                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
-
-            })
+            .load(photoURL).into(view.)
+//            .into(object : com.squareup.picasso.Target {
+//                override fun onBitmapLoaded(bitmap: Bitmap, from: Picasso.LoadedFrom) {
+//                    photoView.setImageBitmap(bitmap)
+//                }
+//
+//                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
+//
+//                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
+//
+//            })
     }
 
     override fun onCreateView(
@@ -47,14 +47,14 @@ class PhotoFragment : Fragment() {
     }
 
     companion object {
-        private val PHOTO_URL = "photoURL"
-        @JvmStatic
-
-        fun newInstance(photoURL: String) =
-            PhotoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(PHOTO_URL, photoURL)
-                }
-            }
+        const val PHOTO_URL = "photoURL"
+//        @JvmStatic
+//
+//        fun newInstance(photoURL: String) =
+//            PhotoFragment().apply {
+//                arguments = Bundle().apply {
+//                    putString(PHOTO_URL, photoURL)
+//                }
+//            }
     }
 }

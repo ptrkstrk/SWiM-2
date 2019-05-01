@@ -1,4 +1,4 @@
-package com.example.labtestapp.logic
+package com.example.labtestapp.photo_handling
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +22,5 @@ import androidx.recyclerview.widget.RecyclerView
 
      interface RecyclerItemTouchHelperListener {
          fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int, position: Int)
-         //fun onItemClick(viewHolder: RecyclerView.ViewHolder)
      }
 }

@@ -9,6 +9,14 @@ import com.example.labtestapp.fragments.PhotoFragment
 
 class PhotoDetailsActivity : AppCompatActivity() {
 
+    companion object {
+        const val URL_KEY = "url"
+        const val NAME_KEY = "name"
+        const val TAGS_KEY = "tags"
+        const val SIMILAR_PHOTOS_URLS_KEY = "similar photos"
+        const val DATE_KEY = "date"
+    }
+
     var isPhotoFragmentLoaded = true
     val fragmentsManager = supportFragmentManager
     var name = ""
@@ -18,9 +26,9 @@ class PhotoDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        name = intent.getStringExtra("name")
-        photoURL = intent.getStringExtra("url")
-        tags = intent.getStringExtra("tags")
+        name = intent.getStringExtra(NAME_KEY)
+        photoURL = intent.getStringExtra(URL_KEY)
+        tags = intent.getStringExtra(TAGS_KEY)
         showPhotoFragment()
 
         val toggleButton = findViewById<Button>(R.id.toggleBtn)
