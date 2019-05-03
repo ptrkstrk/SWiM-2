@@ -1,21 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".fragments.DetailsFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:background="@color/colorPrimaryUltraLight">
-
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/tagsView" android:textAlignment="center"
-                android:textSize="36sp" android:textColor="@color/textColor"
-                tools:layout_editor_absoluteX="0dp" android:layout_marginTop="@dimen/TV_margin"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="@dimen/TV_margin"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:text="@string/tags_default_text"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tagsView"
+            android:textColor="@color/textColor"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@string/details_default_text" app:layout_constraintTop_toBottomOf="@+id/dateView"
+            app:layout_constraintStart_toEndOf="@+id/tagsLabel" android:layout_marginStart="@dimen/default_margin"
+            android:textSize="24sp"/>
+    <TextView
+            android:text="@string/details_default_text"
+            android:layout_width="wrap_content"
+            android:textColor="@color/textColor"
+            android:layout_height="wrap_content" android:id="@+id/nameView"
+            android:layout_marginTop="@dimen/default_margin" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nameLabel" android:layout_marginStart="@dimen/default_margin"
+            android:textSize="24sp"/>
+    <TextView
+            android:text="@string/details_default_text"
+            android:layout_width="wrap_content"
+            android:textColor="@color/textColor"
+            android:layout_height="wrap_content" android:id="@+id/dateView"
+            app:layout_constraintStart_toEndOf="@+id/dateLabel" android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin" app:layout_constraintTop_toBottomOf="@+id/nameView"
+            android:textSize="24sp"/>
+    <TextView
+            android:text="@string/nameTV_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/nameLabel"
+            android:layout_marginTop="@dimen/default_margin" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="@dimen/default_margin"
+            android:textSize="24sp"/>
+    <TextView
+            android:text="@string/dateTV_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/dateLabel"
+            android:layout_marginTop="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@+id/nameLabel"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="@dimen/default_margin"
+            android:textSize="24sp"/>
+    <TextView
+            android:text="@string/tagsTV_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/tagsLabel"
+            android:layout_marginTop="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@+id/dateLabel" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/default_margin" android:textSize="24sp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

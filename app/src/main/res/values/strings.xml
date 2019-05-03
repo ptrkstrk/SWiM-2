@@ -6,17 +6,16 @@
     <string name="add_urlTV_label">Image URL</string>
     <string name="add_nameTV_label">Image Name</string>
     <string name="add_name_hint">Name</string>
-    <string name="main_row_nameTV_label">Name:</string>
-    <string name="main_row_dateTV_label">Date:</string>
-    <string name="main_row_tagsTV_label">Tags:</string>
+    <string name="nameTV_label">Name:</string>
+    <string name="dateTV_label">Date:</string>
+    <string name="tagsTV_label">Tags:</string>
     <string name="add_url_error_msg">enter URL address</string>
     <string name="add_no_name_error_msg">enter name</string>
     <string name="add_long_name_error_msg">Name can be up to 25 characters long</string>
     <string name="photoDetailsLabel">Photo details</string>
+    <string name="photo_page_title">Photo</string>
+    <string name="details_page_title">Details</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="toggle_show_tags">Show Tags</string>
-    <string name="toggle_show_photo">Show Photo</string>
-    <string name="tags_default_text">No Data</string>
+    <string name="details_default_text">No Data</string>
+    <string name="similar_images_label">Similar images</string>
 </resources>

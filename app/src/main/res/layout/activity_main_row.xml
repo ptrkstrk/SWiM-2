@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tagsTV"
             android:fontFamily="@font/roboto"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/main_rowTV_margin"
             app:layout_constraintTop_toBottomOf="@+id/dateTV"
             app:layout_constraintStart_toEndOf="@+id/tagsLabelTV"
             android:layout_marginStart="@dimen/main_rowTV_margin" android:textColor="@color/textColor"
@@ -47,7 +47,7 @@
             android:layout_marginBottom="@dimen/main_rowIV_margin"
             app:layout_constraintBottom_toTopOf="@+id/guideline2" app:srcCompat="@drawable/ic_no_photo"/>
     <TextView
-            android:text="@string/main_row_nameTV_label"
+            android:text="@string/nameTV_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/nameLabelTV" app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
             android:fontFamily="@font/roboto" android:textColor="@color/textColor"
             app:layout_constraintTop_toTopOf="@+id/guideline2" android:textStyle="bold"/>
     <TextView
-            android:text="@string/main_row_dateTV_label"
+            android:text="@string/dateTV_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/dateLabelTV"
@@ -66,7 +66,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline2" android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/guideline3"/>
     <TextView
-            android:text="@string/main_row_tagsTV_label"
+            android:text="@string/tagsTV_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tagsLabelTV" android:fontFamily="@font/roboto"

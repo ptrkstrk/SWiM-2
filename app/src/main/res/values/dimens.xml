@@ -10,6 +10,7 @@
     <dimen name="main_row_height">280dp</dimen>
     <dimen name="add_button_shape_radius">10dp</dimen>
     <dimen name="main_row_shape_radius">8dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
     <dimen name="main_row_stroke_width">1dp</dimen>
     <dimen name="frame_margin">8dp</dimen>
 </resources>

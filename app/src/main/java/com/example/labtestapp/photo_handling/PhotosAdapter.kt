@@ -15,65 +15,87 @@ import com.example.labtestapp.R
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.squareup.picasso.Picasso
-
+import com.squareup.picasso.Target
 
 
 class PhotosAdapter(val entriesList: ArrayList<PhotoEntry>) : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
 
+    private lateinit var currentEntry:PhotoEntry
+
     companion object {
        const val VISIBLE_TAGS_AMOUNT = 3
-        const val SIMILAR_PHOTOS_AMOUNT = 6
+        const val SIMILAR_PHOTOS_MAX_AMOUNT = 6
         const val FAIL_LOG = "Failure"
         const val TAGS_SEPARATOR = " "
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.activity_main_row, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_main_row, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentIndex = itemCount - (position + 1)
-        val currentEntry = entriesList[currentIndex]
+        currentEntry = entriesList[currentIndex]
         holder.name.text = currentEntry.name
         holder.imageURL = currentEntry.url
-        setPhotoAndTags(holder, currentEntry)
+        setPhotoAndTags(holder)
         holder.date.text = currentEntry.date
-        val similarPhotosUrls = findSimilarPhotos(currentEntry)
-        holder.setOnClickListener(similarPhotosUrls)
+        setOnClickListener(holder)
     }
 
-    private fun setPhotoAndTags(holder: ViewHolder, entry: PhotoEntry ) {
-        Picasso.get()
-            .load(holder.imageURL)
-            .into(object : com.squareup.picasso.Target {
-                override fun onBitmapLoaded(bitmap: Bitmap, from: Picasso.LoadedFrom) {
-                    val vision = FirebaseVisionImage.fromBitmap(bitmap)
-                    val labeler = FirebaseVision.getInstance().onDeviceImageLabeler
-                    labeler.processImage(vision)
-                        .addOnSuccessListener { labels ->
-                            holder.image.setImageBitmap(bitmap)
-                            val tags = labels.map { it.text }
-                            entry.tags = ArrayList(tags)
-                            holder.tags.text = tags.joinToString(
-                                TAGS_SEPARATOR, "", "", VISIBLE_TAGS_AMOUNT, "")
-                        }
-                        .addOnFailureListener {
-                            Log.wtf(FAIL_LOG, it.message)
-                        }
-                }
+    private fun setPhotoAndTags(holder: ViewHolder ) {
+        val imgTarget = createImgTarget(holder)
+        Picasso.get().load(holder.imageURL).into(imgTarget)
+    }
 
-                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
+    private fun createImgTarget(holder: PhotosAdapter.ViewHolder): Target {
+        return object : Target {
+            override fun onBitmapLoaded(bitmap: Bitmap, from: Picasso.LoadedFrom) {
+                val vision = FirebaseVisionImage.fromBitmap(bitmap)
+                val labeler = FirebaseVision.getInstance().onDeviceImageLabeler
+                labeler.processImage(vision)
+                    .addOnSuccessListener { labels ->
+                        holder.image.setImageBitmap(bitmap)
+                        val tags = labels.map { it.text }
+                        currentEntry.tags = ArrayList(tags)
+                        holder.tags.text = tags.joinToString(
+                            TAGS_SEPARATOR, "", "", VISIBLE_TAGS_AMOUNT, "")
+                    }
+                    .addOnFailureListener {
+                        Log.wtf(FAIL_LOG, it.message)
+                    }
+            }
 
-                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
+            override fun onPrepareLoad(placeHolderDrawable: Drawable?) {}
 
-            })
+            override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {}
+
+        }
+    }
+
+    private fun setOnClickListener(holder:ViewHolder) {
+        holder.itemView.setOnClickListener {
+            val detailsIntent = prepareDetailsIntent(holder)
+            holder.itemView.context.startActivity(detailsIntent)
+        }
+    }
+
+    private fun prepareDetailsIntent(holder:ViewHolder): Intent {
+        val detailsIntent = Intent(holder.itemView.context, PhotoDetailsActivity::class.java)
+        detailsIntent.putExtra(PhotoDetailsActivity.URL_KEY, holder.imageURL)
+        detailsIntent.putExtra(PhotoDetailsActivity.NAME_KEY, holder.name.text.toString())
+        detailsIntent.putExtra(PhotoDetailsActivity.TAGS_KEY, holder.tags.text.toString())
+        detailsIntent.putExtra(PhotoDetailsActivity.DATE_KEY, holder.date.text.toString())
+        val similarPhotosUrls = findSimilarPhotos(currentEntry)
+        detailsIntent.putExtra(PhotoDetailsActivity.SIMILAR_PHOTOS_URLS_KEY,similarPhotosUrls)
+        return detailsIntent
     }
 
     override fun getItemCount() = entriesList.size
 
     fun removeAt(deletedIndex: Int) {
-        entriesList.removeAt(itemCount - (deletedIndex + 1)) // NW CZY INDEKS NIE JEST ZLE!!!!
+        entriesList.removeAt(itemCount - (deletedIndex + 1))
         notifyItemRemoved(deletedIndex)
     }
 
@@ -88,26 +110,21 @@ class PhotosAdapter(val entriesList: ArrayList<PhotoEntry>) : RecyclerView.Adapt
         for(photoEntry in entriesList)
             if(photoEntry != examinedEntry) {
                 similarity = examinedEntry.evaluateSimilarity(photoEntry)
-                entriesWithSimilarities.add(Pair(photoEntry, similarity))
+                if(similarity > 0)
+                    entriesWithSimilarities.add(Pair(photoEntry, similarity))
             }
-        val sortedEntries = entriesWithSimilarities.sortedWith(compareBy {it.second} )
-        val lastIndex = sortedEntries.size - 1
-        val mostSimilarEntries = sortedEntries.subList(lastIndex - SIMILAR_PHOTOS_AMOUNT, lastIndex)
+        val mostSimilarEntries = extractBestOnes(entriesWithSimilarities)
         return ArrayList(mostSimilarEntries.map{it.first.url})
     }
 
+    private fun extractBestOnes(entriesWithSimilarities: ArrayList<Pair<PhotoEntry, Int>>)
+            : List<Pair<PhotoEntry, Int>> {
+        val sortedEntries = entriesWithSimilarities.sortedWith(compareBy {it.second})
+        val lastIndex = minOf(SIMILAR_PHOTOS_MAX_AMOUNT, sortedEntries.size)
+        return sortedEntries.asReversed().subList(0, lastIndex)
+    }
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun setOnClickListener(similarPhotosUrls: ArrayList<String>) {
-            itemView.setOnClickListener {
-                val detailsIntent = Intent(itemView.context, PhotoDetailsActivity::class.java)
-                detailsIntent.putExtra(PhotoDetailsActivity.URL_KEY, imageURL)
-                detailsIntent.putExtra(PhotoDetailsActivity.NAME_KEY, name.text.toString())
-                detailsIntent.putExtra(PhotoDetailsActivity.TAGS_KEY, tags.text.toString())
-                detailsIntent.putExtra(PhotoDetailsActivity.DATE_KEY, date.text.toString())
-                detailsIntent.putExtra(PhotoDetailsActivity.SIMILAR_PHOTOS_URLS_KEY, similarPhotosUrls)
-                itemView.context.startActivity(detailsIntent)
-            }
-        }
 
         val name: TextView = itemView.findViewById(R.id.nameTV)
         val tags: TextView = itemView.findViewById(R.id.tagsTV)
