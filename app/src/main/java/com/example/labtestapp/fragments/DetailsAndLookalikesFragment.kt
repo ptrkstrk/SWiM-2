@@ -119,11 +119,6 @@ class LookalikesFragment : Fragment(){
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        prepareImageViews()
-    }
-
     private fun prepareImageViews() {
         imageViews.add(R.id.imageView1)
         imageViews.add(R.id.imageView2)

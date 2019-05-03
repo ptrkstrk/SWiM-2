@@ -15,7 +15,7 @@ class AddPhotoActivity : AppCompatActivity() {
         const val PHOTO_NAME_KEY = "photoNameKey"
         const val PHOTO_URL_KEY = "photoUrlKey"
         const val PHOTO_DATE_KEY = "photoDateKey"
-        const val NAME_MAX_LENGTH = 25
+        const val NAME_MAX_LENGTH = 20
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

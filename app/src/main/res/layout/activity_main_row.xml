@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+         android:layout_width="match_parent"
         android:background="@drawable/photo_row_frame"
         android:paddingTop="@dimen/main_row_padding"
         android:paddingBottom="@dimen/main_row_padding"
@@ -40,12 +40,11 @@
             android:id="@+id/photo"
             android:layout_marginTop="@dimen/main_rowIV_margin"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="@dimen/main_rowIV_margin"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="@dimen/main_rowIV_margin"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="@dimen/main_rowIV_margin"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2" app:srcCompat="@drawable/ic_no_photo"/>
+            app:layout_constraintBottom_toTopOf="@+id/guideline2" app:srcCompat="@drawable/ic_no_photo"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
     <TextView
             android:text="@string/nameTV_label"
             android:layout_width="wrap_content"

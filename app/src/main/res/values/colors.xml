@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#c97459</color>
     <color name="colorPrimaryLight">#FFDDC0</color>
     <color name="colorPrimaryUltraLight">#FFEDE6</color>
+    <color name="photoRowBackground">#FFFFFF</color>
     <color name="colorAccent">#00BCD4</color>
     <color name="textColor">#212121</color>
     <color name="lightTextColor">#FFFFFF</color>

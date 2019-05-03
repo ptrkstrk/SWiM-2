@@ -30,7 +30,8 @@
                 android:id="@+id/mainRV"
                 android:scrollbars="vertical"
                 android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="parent" tools:layout_editor_absoluteY="@dimen/default_margin"/>
+                app:layout_constraintStart_toStartOf="parent" tools:layout_editor_absoluteY="@dimen/default_margin"
+                android:background="@color/colorPrimaryUltraLight"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

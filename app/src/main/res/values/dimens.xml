@@ -3,8 +3,8 @@
     <dimen name="add_button_padding">8dp</dimen>
     <dimen name="add_ET_margin">8dp</dimen>
     <dimen name="TV_margin">8dp</dimen>
-    <dimen name="main_row_padding">5dp</dimen>
-    <dimen name="main_row_margin">2dp</dimen>
+    <dimen name="main_row_padding">2dp</dimen>
+    <dimen name="main_row_margin">8dp</dimen>
     <dimen name="main_rowTV_margin">8dp</dimen>
     <dimen name="main_rowIV_margin">8dp</dimen>
     <dimen name="main_row_height">280dp</dimen>
@@ -13,4 +13,6 @@
     <dimen name="default_margin">8dp</dimen>
     <dimen name="main_row_stroke_width">1dp</dimen>
     <dimen name="frame_margin">8dp</dimen>
+    <dimen name="similar_photos_margin">2dp</dimen>
+    <dimen name="similar_photos_edge_margin">4dp</dimen>
 </resources>

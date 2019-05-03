@@ -18,6 +18,5 @@
                 android:layout_height="wrap_content" android:id="@+id/photos_tabs"
                 app:tabTextColor="@color/lightTextColor"
                 app:tabBackground="@color/colorPrimary"/>
-        <!--style="@style/Base.AlertDialog.AppCompat.Light"-->
     </androidx.viewpager.widget.ViewPager>
 </androidx.constraintlayout.widget.ConstraintLayout>

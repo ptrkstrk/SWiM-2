@@ -9,13 +9,13 @@
             android:id="@+id/top_fragment_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5">
+            android:layout_weight="1">
     </FrameLayout>
 
     <FrameLayout
             android:id="@+id/bottom_fragment_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5">
+            android:layout_weight="5">
     </FrameLayout>
 </LinearLayout>

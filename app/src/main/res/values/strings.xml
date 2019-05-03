@@ -11,7 +11,7 @@
     <string name="tagsTV_label">Tags:</string>
     <string name="add_url_error_msg">enter URL address</string>
     <string name="add_no_name_error_msg">enter name</string>
-    <string name="add_long_name_error_msg">Name can be up to 25 characters long</string>
+    <string name="add_long_name_error_msg">Name can be up to 20 characters long</string>
     <string name="photoDetailsLabel">Photo details</string>
     <string name="photo_page_title">Photo</string>
     <string name="details_page_title">Details</string>
