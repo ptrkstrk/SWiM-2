@@ -16,11 +16,10 @@ import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
+import java.util.*
 
 
-class PhotosAdapter(val entriesList: ArrayList<PhotoEntry>) : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
-
-    //private lateinit var currentEntry:PhotoEntry
+class PhotosAdapter(val entriesList: LinkedList<PhotoEntry>) : RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
 
     companion object {
        const val VISIBLE_TAGS_AMOUNT = 3
@@ -36,8 +35,7 @@ class PhotosAdapter(val entriesList: ArrayList<PhotoEntry>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentIndex = itemCount - (position + 1)
-        val currentEntry = entriesList[currentIndex]
+        val currentEntry = entriesList[position]
         holder.name.text = currentEntry.name
         holder.imageURL = currentEntry.url
         setPhotoAndTags(holder, currentEntry)
@@ -46,6 +44,7 @@ class PhotosAdapter(val entriesList: ArrayList<PhotoEntry>) : RecyclerView.Adapt
     }
 
     private fun setPhotoAndTags(holder: ViewHolder, entry: PhotoEntry) {
+        holder.clearTagsAndPhoto()
         val imgTarget = createImgTarget(holder, entry)
         Picasso.get().load(holder.imageURL).into(imgTarget)
     }
@@ -97,12 +96,12 @@ class PhotosAdapter(val entriesList: ArrayList<PhotoEntry>) : RecyclerView.Adapt
     override fun getItemCount() = entriesList.size
 
     fun removeAt(deletedIndex: Int) {
-        entriesList.removeAt(itemCount - (deletedIndex + 1))
+        entriesList.removeAt(deletedIndex)
         notifyItemRemoved(deletedIndex)
     }
 
     fun add(entry: PhotoEntry) {
-        entriesList.add(entry)
+        entriesList.addFirst(entry)
         notifyItemInserted(0)
     }
 
@@ -133,5 +132,10 @@ class PhotosAdapter(val entriesList: ArrayList<PhotoEntry>) : RecyclerView.Adapt
         val date: TextView = itemView.findViewById(R.id.dateTV)
         val image: ImageView = itemView.findViewById(R.id.photo)
         var imageURL: String = ""
+
+        fun clearTagsAndPhoto(){
+            tags.text = ""
+            image.setImageResource(R.drawable.ic_no_photo)
+        }
     }
 }

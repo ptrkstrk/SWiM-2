@@ -67,17 +67,17 @@ class MainActivity : AppCompatActivity(), RecyclerRowTouchHelper.RecyclerItemTou
 
     private fun setUpLayout() {
         val photosSP = getSharedPreferences(PHOTOS_SP, Context.MODE_PRIVATE)
-        var entriesList:ArrayList<PhotoEntry> = ArrayList()
+        var entriesList:LinkedList<PhotoEntry> = LinkedList()
         if(photosSP.contains(PHOTOS_SP_KEY)){
-            val type = object : TypeToken<ArrayList<PhotoEntry>>() {}.type
-            entriesList = Gson().fromJson<ArrayList<PhotoEntry>>(photosSP.getString(PHOTOS_SP_KEY, ""), type)
+            val type = object : TypeToken<LinkedList<PhotoEntry>>() {}.type
+            entriesList = Gson().fromJson<LinkedList<PhotoEntry>>(photosSP.getString(PHOTOS_SP_KEY, ""), type)
         }
         mainRV.layoutManager = LinearLayoutManager(this)
         attachAdapter(entriesList)
         attachTouchHelper()
     }
 
-    private fun attachAdapter(entriesList:ArrayList<PhotoEntry>) {
+    private fun attachAdapter(entriesList:LinkedList<PhotoEntry>) {
         adapter = PhotosAdapter(entriesList)
         mainRV.adapter = adapter
     }
